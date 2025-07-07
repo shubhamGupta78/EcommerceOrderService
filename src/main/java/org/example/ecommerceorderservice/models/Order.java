@@ -1,10 +1,13 @@
 package org.example.ecommerceorderservice.models;
 
 import com.fasterxml.jackson.annotation.JsonEnumDefaultValue;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.EnumNaming;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -18,7 +21,9 @@ public class Order extends  BaseModel {
 
     private Long addressId; // ID of the address where the order will be shipped
 
-    private Long cartId; // ID of the cart associated with this order
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<OrderItem> orderItems;// ID of the cart associated with this order
 
     @Enumerated(EnumType.ORDINAL)
     private OrderStatus status;

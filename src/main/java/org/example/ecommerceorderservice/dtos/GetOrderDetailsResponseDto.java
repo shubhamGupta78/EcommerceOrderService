@@ -19,7 +19,6 @@ public class GetOrderDetailsResponseDto {
         orderDetailsResponseDto.setOrderId(order.getId());
         orderDetailsResponseDto.setOrderStatus(String.valueOf(order.getStatus()));
         orderDetailsResponseDto.setUserId(order.getUserId());
-        orderDetailsResponseDto.setCartId(order.getCartId());
         orderDetailsResponseDto.setAddressId(order.getAddressId());
         return orderDetailsResponseDto;
     }
